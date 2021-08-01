@@ -2,7 +2,7 @@ const db = require("./db")
 
 class WordsController {
     async postWord(req, res) {
-        const {original, translate} = req.body
+        const {original, translate} = JSON.parse(req.body.data)
         const newWord = await db.query("INSERT INTO words (original, translate) values ($1, $2) RETURNING *", [original, translate])
         res.json(newWord.rows[0])
     }
@@ -12,8 +12,13 @@ class WordsController {
         res.json(word.rows[0])
     }
     async getWords(req, res) {
-        const {ids} = req.query
-        const idsArr = ids.split(",")
+        let {ids} = req.query
+        const idsArr = []
+        if (ids) {
+            idsArr = ids.split(",")
+        } else {
+            idsArr = [123, 423, 543, 654]
+        }
         console.log("REQUEST WORDS", idsArr);
         const word = await db.query("SELECT * FROM words WHERE id = ANY($1::int[])",[idsArr])
         res.json(word.rows)
