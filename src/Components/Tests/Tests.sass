@@ -1,0 +1,50 @@
+
+.testsContainer
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+    height: 200px
+    width: 100%
+    padding: 10px 0
+    border-top: 1px solid rgba(0 ,0, 0, 0.4)
+    border-bottom: 1px solid rgba(0 ,0, 0, 0.4)
+    .good
+        border: 1px solid green
+    .bad
+        border: 1px solid red
+    .testItem
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        height: 35px
+        border-radius: 5px
+        font-family: 'Raleway', serif
+        font-weight: bolder
+        font-size: 18px
+        color: rgba(0, 0, 0, .8)
+        cursor: pointer
+        overflow-y: hidden
+        overflow-x: overlay
+        border: 1px solid black
+
+@media screen and (max-width: 1000px)
+    .testsContainer
+        .testItem
+            height: 35px
+            font-size: 17px
+@media screen and (max-width: 700px)
+    .testsContainer
+        height: 160px
+        padding: 5px 0
+        .testItem
+            height: 28px
+            font-size: 15px
+@media screen and (max-width: 550px)
+    .testsContainer
+        height: 130px
+        padding: 3px 0
+        .testItem
+            height: 25px
+            font-size: 13px
